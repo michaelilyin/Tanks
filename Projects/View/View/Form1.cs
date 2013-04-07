@@ -62,7 +62,7 @@ namespace View
             {
                 gr.DrawImage(Resources.Objects[physicalObject.Type], 
                     physicalObject.Position.X - physicalObject.Size/2,
-                    buffer.Height - (physicalObject.Position.Y - physicalObject.Size / 2), 
+                    buffer.Height - (physicalObject.Position.Y - physicalObject.Size / 2) - physicalObject.Size, 
                     physicalObject.Size, physicalObject.Size);
             }
             pictureBox1.Image = buffer;
