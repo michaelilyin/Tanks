@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TanksInterfaces
 {
-    public interface IPysicalObject : IGameObject
+    public interface IPhysicalObject : IGameObject
     {
         ObjType Type { get; }
     }

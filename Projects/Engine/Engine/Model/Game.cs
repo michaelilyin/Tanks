@@ -37,7 +37,7 @@ namespace Engine.Model
         }
         public void Initialize()
         {
-            
+            _currentLevel = new Level();
         }
 
         private ILevel _currentLevel;
@@ -45,6 +45,21 @@ namespace Engine.Model
         private void Update()
         {
             _currentLevel.Update();
+        }
+
+        public void Start()
+        {
+            _currentLevel.Load(1);
+        }
+
+        public void Pause()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Continue()
+        {
+            throw new NotImplementedException();
         }
     }
 }

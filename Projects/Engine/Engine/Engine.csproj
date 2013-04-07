@@ -42,6 +42,7 @@
     <Compile Include="Controller.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Level.cs" />
+    <Compile Include="Model\Objects\Metal.cs" />
     <Compile Include="Model\Strategies\PlayerStrategy.cs" />
     <Compile Include="Model\Tank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,7 +53,6 @@
       <Name>TanksInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

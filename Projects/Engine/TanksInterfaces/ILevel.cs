@@ -9,8 +9,10 @@ namespace TanksInterfaces
     public interface ILevel
     {
         List<ITank> Tanks { get; }
-        List<ObjType> Objects { get; }
+        List<IPhysicalObject> Objects { get; }
         void Update();
         IGameObject Collizion(IGameObject obj);
+        void Load(int num);
+        int Number { get; }
     }
 }
