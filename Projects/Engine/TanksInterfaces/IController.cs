@@ -8,5 +8,9 @@ namespace TanksInterfaces
 {
     public interface IController
     {
+        void Initialize();
+        void Continue();
+        void Strat();
+        void Pause();
     }
 }

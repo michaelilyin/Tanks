@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using TanksInterfaces;
 
 namespace Engine.Model
 {
     public class DrawEventArgs : EventArgs
     {
-        public DrawEventArgs()
+        public List<ITank> Tanks;
+        public List<IPhysicalObject> Objects;
+        public DrawEventArgs(List<ITank> tanks, List<IPhysicalObject> objects)
         {
-
+            Tanks = tanks;
+            Objects = objects;
         }
     }
 
@@ -33,11 +38,23 @@ namespace Engine.Model
         private void _draw()
         {
             if (Draw != null)
-                Draw(this, new DrawEventArgs());
+                Draw(this, new DrawEventArgs(_currentLevel.Tanks, _currentLevel.Objects));
         }
+
+        private System.Timers.Timer timer;
         public void Initialize()
         {
+            timer = new System.Timers.Timer(28) {Enabled = false};
+            timer.Elapsed += timer_Elapsed;
             _currentLevel = new Level();
+        }
+
+        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            timer.Stop();
+            Update();
+            _draw();
+            timer.Start();
         }
 
         private ILevel _currentLevel;
@@ -50,6 +67,7 @@ namespace Engine.Model
         public void Start()
         {
             _currentLevel.Load(1);
+            timer.Start();
         }
 
         public void Pause()

@@ -21,7 +21,7 @@ namespace Engine.Model
 
         public void Update()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private double Distance(IGameObject obj1, IGameObject obj2)
@@ -39,7 +39,7 @@ namespace Engine.Model
         #region DownloadLevel
         public int Number { get; private set; }
 
-        private List<Vector> ParsePositionString(string source)
+        private IEnumerable<Vector> ParsePositionString(string source)
         {
             List<Vector> result = new List<Vector>();
             for (int i = 0; i < source.Length; i++)
@@ -47,6 +47,7 @@ namespace Engine.Model
                 string x = "", y = "";
                 while (source[i] != ',')
                     x += source[i++];
+                i++;
                 while (source[i] != ';')
                     y += source[i++];
                 result.Add(new Vector(Int32.Parse(x), Int32.Parse(y)));
@@ -59,7 +60,7 @@ namespace Engine.Model
         {
             Number = num;
             string path = Directory.GetCurrentDirectory();
-            path += "\\Levels\\" + num.ToString() + ".lvl";
+            path += "\\Engine\\Levels\\" + num.ToString() + ".lvl";
             using (StreamReader sr = new StreamReader(path))
             {
                 string metalBloks = sr.ReadLine();
@@ -67,9 +68,21 @@ namespace Engine.Model
                 string waterBloks = sr.ReadLine();
                 string sandBloks = sr.ReadLine();
                 string forestBloks = sr.ReadLine();
-                List<Vector> temp = ParsePositionString(metalBloks);
+                IEnumerable<Vector> temp = ParsePositionString(metalBloks);
                 foreach (var a in temp)
                     Objects.Add(new Metal(a));
+                temp = ParsePositionString(stoneBloks);
+                foreach (var a in temp)
+                    Objects.Add(new Stone(a));
+                temp = ParsePositionString(waterBloks);
+                foreach (var a in temp)
+                    Objects.Add(new Water(a));
+                temp = ParsePositionString(sandBloks);
+                foreach (var a in temp)
+                    Objects.Add(new Sand(a));
+                temp = ParsePositionString(forestBloks);
+                foreach (var a in temp)
+                    Objects.Add(new Forest(a));
             }
 
         }

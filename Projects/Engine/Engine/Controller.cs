@@ -13,18 +13,37 @@ namespace Engine
         public Controller(IView view)
         {
             _view = view;
-            Game.Instance.Initialize();
-            Game.Instance.Draw += Game_Draw;
         }
 
         private void Game_Draw(object sender, DrawEventArgs e)
         {
-            _view.Draw();
+            _view.Draw(e.Tanks, e.Objects);
         }
 
         public static int GetKey()
         {
             throw new NotImplementedException();
+        }
+
+        public void Initialize()
+        {
+            Game.Instance.Initialize();
+            Game.Instance.Draw += Game_Draw;
+        }
+
+        public void Continue()
+        {
+            Game.Instance.Continue();
+        }
+
+        public void Strat()
+        {
+            Game.Instance.Start();
+        }
+
+        public void Pause()
+        {
+            Game.Instance.Pause();
         }
     }
 }

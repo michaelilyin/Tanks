@@ -8,6 +8,6 @@ namespace TanksInterfaces
 {
     public interface IView
     {
-        void Draw();
+        void Draw(List<ITank> tanks, List<IPhysicalObject> objects);
     }
 }
