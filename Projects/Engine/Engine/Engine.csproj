@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="Model\Builders\LightTankBuilder.cs" />
+    <Compile Include="Model\Builders\TanksFactory.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Objects\Forest.cs" />
@@ -49,6 +51,9 @@
     <Compile Include="Model\Objects\Water.cs" />
     <Compile Include="Model\Strategies\PlayerStrategy.cs" />
     <Compile Include="Model\Tank.cs" />
+    <Compile Include="Model\TankElements\FastTracks.cs" />
+    <Compile Include="Model\TankElements\LightBody.cs" />
+    <Compile Include="Model\TankElements\LightGun.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +61,9 @@
       <Project>{07345e7a-3c2d-4999-979a-3e65fcc80768}</Project>
       <Name>TanksInterfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

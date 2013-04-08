@@ -47,12 +47,13 @@
     <Compile Include="IGameObject.cs" />
     <Compile Include="ILevel.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="Patterns\IBuilder.cs" />
     <Compile Include="Patterns\IStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicClases.cs" />
     <Compile Include="TankElements\IBody.cs" />
     <Compile Include="TankElements\IGun.cs" />
-    <Compile Include="TankElements\ITrack.cs" />
+    <Compile Include="TankElements\ITracks.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

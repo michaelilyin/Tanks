@@ -9,5 +9,7 @@ namespace TanksInterfaces.TankElements
     public interface IGun
     {
         GunType Type { get; }
+        int Damage { get; }
+        int Weight { get; }
     }
 }

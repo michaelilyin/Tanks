@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TanksInterfaces.TankElements
 {
-    public interface ITrack
+    public interface ITracks
     {
-        TrackType Type { get; }
+        TracksType Type { get; }
         int HealthPoints { get; }
         int Speed { get; }
     }

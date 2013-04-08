@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Engine.Model.Builders;
 using Engine.Model.Objects;
 using Engine.Model.Strategies;
 using TanksInterfaces;
@@ -13,11 +14,14 @@ namespace Engine.Model
         public List<ITank> Tanks { get; private set; }
         public List<IPhysicalObject> Objects { get; private set; }
 
+        private readonly LightTankBuilder _lightTankBuilder;
+
         public Level()
         {
+            _lightTankBuilder = new LightTankBuilder();
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
-            Tanks.Add(new Tank(new PlayerStrategy(this), new Vector(150, 56)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new PlayerStrategy(this), new Vector(150,150)));
         }
 
         public void Update()
