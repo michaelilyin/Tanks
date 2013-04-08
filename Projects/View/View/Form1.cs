@@ -70,10 +70,24 @@ namespace View
             foreach (var tank in tanks)
             {
                 if (tank.Direction != Vector.Stand)
-                gr.DrawImage(Resources.Tanks[tank.Direction],
+                {
+                    gr.DrawImage(Resources.Traks[tank.Tracks.Type][tank.Direction],
                     tank.Position.X - tank.Size / 2,
                     buffer.Height - (tank.Position.Y - tank.Size / 2) - tank.Size,
                     tank.Size, tank.Size);
+                    gr.DrawImage(Resources.Bodies[tank.Body.Type][tank.Direction],
+                    tank.Position.X - tank.Size / 2,
+                    buffer.Height - (tank.Position.Y - tank.Size / 2) - tank.Size,
+                    tank.Size, tank.Size);
+                    gr.DrawImage(Resources.Guns[tank.Gun.Type][tank.Direction],
+                    tank.Position.X - tank.Size / 2,
+                    buffer.Height - (tank.Position.Y - tank.Size / 2) - tank.Size,
+                    tank.Size, tank.Size);
+                }
+                //gr.DrawImage(Resources.Tanks[tank.Direction],
+                //    tank.Position.X - tank.Size / 2,
+                //    buffer.Height - (tank.Position.Y - tank.Size / 2) - tank.Size,
+                //    tank.Size, tank.Size);
             }
             pictureBox1.Image = buffer;
         }
