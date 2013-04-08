@@ -11,5 +11,7 @@ namespace TanksInterfaces
     {
         IStrategy Strategy { get; }
         void Update();
+        void SetSrategy(IStrategy newStrategy);
+        int Speed { get; }
     }
 }

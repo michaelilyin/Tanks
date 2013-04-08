@@ -10,5 +10,6 @@ namespace TanksInterfaces.Patterns
     {
         Vector GetNewPosition(ITank me);
         bool Fire();
+        Vector GetDirection();
     }
 }

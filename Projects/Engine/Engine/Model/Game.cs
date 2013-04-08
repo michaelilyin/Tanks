@@ -18,7 +18,7 @@ namespace Engine.Model
 
     public delegate void DrawEvent(object sender, DrawEventArgs e);
 
-    public class Game
+    internal class Game
     {
         #region Singletone
 

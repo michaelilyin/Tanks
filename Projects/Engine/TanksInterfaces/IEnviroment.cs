@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TanksInterfaces
 {
-    public interface IView
+    public interface IEnviroment
     {
-        void Draw(List<ITank> tanks, List<IPhysicalObject> objects);
-        int GetKey();
+        IGameObject Collizion(IGameObject obj);
+        IGameObject Collizion(Vector pos, int size);
     }
 }

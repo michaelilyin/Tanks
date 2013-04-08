@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Engine;
 using TanksInterfaces;
 using TanksInterfaces.Attributes;
 
@@ -53,6 +54,7 @@ namespace View
                     }
                 }
             }
+            //gameController = new Controller(this);
         }
 
         public void Draw(List<ITank> tanks, List<IPhysicalObject> objects)
@@ -65,12 +67,38 @@ namespace View
                     buffer.Height - (physicalObject.Position.Y - physicalObject.Size / 2) - physicalObject.Size, 
                     physicalObject.Size, physicalObject.Size);
             }
+            foreach (var tank in tanks)
+            {
+                if (tank.Direction != Vector.Stand)
+                gr.DrawImage(Resources.Tanks[tank.Direction],
+                    tank.Position.X - tank.Size / 2,
+                    buffer.Height - (tank.Position.Y - tank.Size / 2) - tank.Size,
+                    tank.Size, tank.Size);
+            }
             pictureBox1.Image = buffer;
+        }
+
+        public int GetKey()
+        {
+            return _currentKey;
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
             gameController.Strat();
+        }
+
+        private int _currentKey = -1;
+        private int _prevKey = -1;
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            _currentKey = e.KeyValue;
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            _currentKey = -1;
         }
     }
 }

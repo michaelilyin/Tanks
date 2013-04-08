@@ -7,7 +7,7 @@ using TanksInterfaces;
 
 namespace Engine.Model.Objects
 {
-    public class Stone : IPhysicalObject
+    internal class Stone : IPhysicalObject
     {
         public Vector Position { get; private set; }
         public Vector Direction { get; private set; }

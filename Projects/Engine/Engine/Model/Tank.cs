@@ -8,21 +8,32 @@ using TanksInterfaces.Patterns;
 
 namespace Engine.Model
 {
-    public class Tank : ITank
+    internal class Tank : ITank
     {
         public Vector Position { get; private set; }
         public Vector Direction { get; private set; }
         public int Size { get; private set; }
         public IStrategy Strategy { get; private set; }
+        public int Speed { get; private set; }
 
-        public Tank(IStrategy strategy)
+        public Tank(IStrategy strategy, Vector pos)
         {
+            Size = 40;
+            Position = pos;
             Strategy = strategy;
+            Direction = Vector.Stand;
+            Speed = 3;
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            Direction = Strategy.GetDirection();
+            Position = Strategy.GetNewPosition(this);
+        }
+
+        public void SetSrategy(IStrategy newStrategy)
+        {
+            Strategy = newStrategy;
         }
     }
 }

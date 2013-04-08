@@ -8,7 +8,7 @@ namespace Engine
     [GameController()]
     public class Controller : IController
     {
-        private readonly IView _view;
+        private static IView _view;
 
         public Controller(IView view)
         {
@@ -22,7 +22,7 @@ namespace Engine
 
         public static int GetKey()
         {
-            throw new NotImplementedException();
+            return _view.GetKey();
         }
 
         public void Initialize()

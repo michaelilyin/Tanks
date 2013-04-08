@@ -8,7 +8,7 @@ using TanksInterfaces;
 
 namespace Engine.Model
 {
-    public class Level : ILevel
+    internal class Level : ILevel, IEnviroment
     {
         public List<ITank> Tanks { get; private set; }
         public List<IPhysicalObject> Objects { get; private set; }
@@ -17,11 +17,15 @@ namespace Engine.Model
         {
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
+            Tanks.Add(new Tank(new PlayerStrategy(this), new Vector(150, 56)));
         }
 
         public void Update()
         {
-            //throw new NotImplementedException();
+            foreach (var tank in Tanks)
+            {
+                tank.Update();
+            }
         }
 
         private double Distance(IGameObject obj1, IGameObject obj2)
@@ -29,14 +33,28 @@ namespace Engine.Model
             return Math.Sqrt(Math.Pow(obj2.Position.X - obj1.Position.X, 2) + Math.Pow(obj2.Position.Y - obj1.Position.Y, 2));
         }
 
+        private double Distance(IGameObject obj, Vector point)
+        {
+            return Math.Sqrt(Math.Pow(obj.Position.X - point.X, 2) + Math.Pow(obj.Position.Y - point.Y, 2));
+        }
+
         public IGameObject Collizion(IGameObject obj)
         {
             foreach (var a in Tanks)
-                if (Distance(obj, a) <= (obj.Size + a.Size)/2) return a;
-            return Objects.FirstOrDefault(a => Distance(obj, a) <= (obj.Size + a.Size)/2);
+                if (a.Position.X != obj.Position.X && a.Position.Y != obj.Position.Y)
+                    if (Distance(obj, a) < (obj.Size + a.Size)/2 - 3) return a;
+            return Objects.FirstOrDefault(a => Distance(obj, a) < (obj.Size + a.Size)/2 - 3);
         }
 
-        #region DownloadLevel
+        public IGameObject Collizion(Vector pos, int size)
+        {
+            foreach (var a in Tanks)
+                if (a.Position.X != pos.X && a.Position.Y != pos.Y)
+                    if (Distance(a, pos) < (size + a.Size) / 2 - 3) return a;
+            return Objects.FirstOrDefault(a => Distance(a, pos) < (size + a.Size) / 2 - 3);
+        }
+
+        #region LoadLevel
         public int Number { get; private set; }
 
         private IEnumerable<Vector> ParsePositionString(string source)

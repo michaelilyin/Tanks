@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\GameControllerAttribute.cs" />
+    <Compile Include="IEnviroment.cs" />
     <Compile Include="IPhysicalObject.cs" />
     <Compile Include="ITank.cs" />
     <Compile Include="IController.cs" />
