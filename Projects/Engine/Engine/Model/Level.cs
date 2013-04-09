@@ -15,13 +15,16 @@ namespace Engine.Model
         public List<IPhysicalObject> Objects { get; private set; }
 
         private readonly LightTankBuilder _lightTankBuilder;
+        private readonly MediumTankBuilder _mediumTankBuilder;
 
         public Level()
         {
+            Rnd = new Random();
             _lightTankBuilder = new LightTankBuilder();
+            _mediumTankBuilder = new MediumTankBuilder();
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
-            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new PlayerStrategy(this), new Vector(150,150)));
+            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(150,150)));
         }
 
         public void Update()
@@ -57,6 +60,8 @@ namespace Engine.Model
                     if (Distance(a, pos) < (size + a.Size) / 2 - 3) return a;
             return Objects.FirstOrDefault(a => Distance(a, pos) < (size + a.Size) / 2 - 3);
         }
+
+        public Random Rnd { get; private set; }
 
         #region LoadLevel
         public int Number { get; private set; }

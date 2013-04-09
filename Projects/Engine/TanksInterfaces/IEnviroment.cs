@@ -10,5 +10,6 @@ namespace TanksInterfaces
     {
         IGameObject Collizion(IGameObject obj);
         IGameObject Collizion(Vector pos, int size);
+        Random Rnd { get; }
     }
 }

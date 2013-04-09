@@ -13,7 +13,7 @@ namespace Engine.Model.Strategies
             //return newPos;
             IGameObject obj = _enviroment.Collizion(newPos, me.Size);
 #warning diagnostic
-            if (obj != null) System.Diagnostics.Debug.Print("{0} {1} {2}", obj.GetType(), obj.Position.X, obj.Position.Y);
+            if (obj != null) System.Diagnostics.Debug.Print("{0} {1} {2} {3}", me.Type.ToString(), obj.GetType(), obj.Position.X, obj.Position.Y);
             if (obj == null) 
                 return newPos;
             if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Sand)

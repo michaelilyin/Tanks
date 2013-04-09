@@ -32,6 +32,8 @@ namespace View
             Objects[ObjType.Water] = new Bitmap(images + "\\Water.png");
             Objects[ObjType.Sand] = new Bitmap(images + "\\Sand.png");
 
+            /*LightEnemyDetails*/
+
             Bodies[BodyType.Light] = new Dictionary<Vector, Bitmap>();
             Bodies[BodyType.Light][Vector.Left] = new Bitmap(images + "\\LightBodyLeft.png");
             Bodies[BodyType.Light][Vector.Forward] = new Bitmap(images + "\\LightBodyForward.png");
@@ -49,6 +51,25 @@ namespace View
             Guns[GunType.LowDamageGun][Vector.Forward] = new Bitmap(images + "\\LightGunForward.png");
             Guns[GunType.LowDamageGun][Vector.Right] = new Bitmap(images + "\\LightGunRight.png");
             Guns[GunType.LowDamageGun][Vector.Back] = new Bitmap(images + "\\LightGunBack.png");
+
+            /*MediumEnemyDetails*/
+            Bodies[BodyType.Medium] = new Dictionary<Vector, Bitmap>();
+            Bodies[BodyType.Medium][Vector.Left] = new Bitmap(images + "\\MediumBodyLeft.png");
+            Bodies[BodyType.Medium][Vector.Forward] = new Bitmap(images + "\\MediumBodyForward.png");
+            Bodies[BodyType.Medium][Vector.Right] = new Bitmap(images + "\\MediumBodyRight.png");
+            Bodies[BodyType.Medium][Vector.Back] = new Bitmap(images + "\\MediumBodyBack.png");
+
+            Traks[TracksType.Medium] = new Dictionary<Vector, Bitmap>();
+            Traks[TracksType.Medium][Vector.Left] = new Bitmap(images + "\\MediumTracksLeft.png");
+            Traks[TracksType.Medium][Vector.Forward] = new Bitmap(images + "\\MediumTracksForward.png");
+            Traks[TracksType.Medium][Vector.Right] = new Bitmap(images + "\\MediumTracksRight.png");
+            Traks[TracksType.Medium][Vector.Back] = new Bitmap(images + "\\MediumTracksBack.png");
+
+            Guns[GunType.MediumDamageGun] = new Dictionary<Vector, Bitmap>();
+            Guns[GunType.MediumDamageGun][Vector.Left] = new Bitmap(images + "\\MediumGunLeft.png");
+            Guns[GunType.MediumDamageGun][Vector.Forward] = new Bitmap(images + "\\MediumGunForward.png");
+            Guns[GunType.MediumDamageGun][Vector.Right] = new Bitmap(images + "\\MediumGunRight.png");
+            Guns[GunType.MediumDamageGun][Vector.Back] = new Bitmap(images + "\\MediumGunBack.png");
             //Tanks[Vector.Left] = new Bitmap(images + "\\PlayerTankLeft.png");
             //Tanks[Vector.Forward] = new Bitmap(images + "\\PlayerTankForward.png");
             //Tanks[Vector.Right] = new Bitmap(images + "\\PlayerTankRight.png");
