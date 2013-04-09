@@ -49,6 +49,7 @@
     <Compile Include="Model\Objects\Metal.cs" />
     <Compile Include="Model\Objects\Sand.cs" />
     <Compile Include="Model\Objects\Stone.cs" />
+    <Compile Include="Model\Objects\Wall.cs" />
     <Compile Include="Model\Objects\Water.cs" />
     <Compile Include="Model\Strategies\PlayerStrategy.cs" />
     <Compile Include="Model\Strategies\RandomStrategy.cs" />

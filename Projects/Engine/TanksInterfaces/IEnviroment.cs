@@ -9,7 +9,7 @@ namespace TanksInterfaces
     public interface IEnviroment
     {
         IGameObject Collizion(IGameObject obj);
-        IGameObject Collizion(Vector pos, int size);
+        IGameObject Collizion(IGameObject obj, Vector pos);
         Random Rnd { get; }
     }
 }

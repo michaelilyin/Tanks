@@ -11,7 +11,7 @@ namespace Engine.Model.Strategies
         {
             Vector newPos = me.Position + me.Direction*me.Speed;
             //return newPos;
-            IGameObject obj = _enviroment.Collizion(newPos, me.Size);
+            IGameObject obj = _enviroment.Collizion(me, newPos);
 #warning diagnostic
             if (obj != null) System.Diagnostics.Debug.Print("{0} {1} {2} {3}", me.Type.ToString(), obj.GetType(), obj.Position.X, obj.Position.Y);
             if (obj == null) 
