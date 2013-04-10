@@ -31,7 +31,7 @@ namespace Engine.Model.Builders
             _gun = new LightGun();
         }
 
-        public ITank GetProduct(IStrategy strategy, Vector pos)
+        public ITank GetProduct(Strategy strategy, Vector pos)
         {
             return new Tank(_tracks, _body, _gun, pos, strategy);
         }

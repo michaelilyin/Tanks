@@ -8,16 +8,32 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Engine.Model.Builders.HeavyTankBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAISAAAEAA=</HashCode>
+      <FileName>Model\Builders\HeavyTankBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Engine.Model.Builders.LightTankBuilder" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+    <Position X="9.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAISAAAEAA=</HashCode>
       <FileName>Model\Builders\LightTankBuilder.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Engine.Model.Builders.MediumTankBuilder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAISAAAEAA=</HashCode>
+      <FileName>Model\Builders\MediumTankBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Engine.Model.Builders.TanksFactory" Collapsed="true">
-    <Position X="4" Y="3.5" Width="1.5" />
+    <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Builders\TanksFactory.cs</FileName>
@@ -31,22 +47,22 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Model.Game" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQkCAAAQCAAAwAAAACAAAAAAAAAAAAAQAAAAAgAAAA=</HashCode>
       <FileName>Model\Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Engine.Model.Level" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="4" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAgAAIAIAAAAAAQEAAAAAAAAAAAAFAAAAIAAAAAAA=</HashCode>
+      <HashCode>QBQAgAAIAIAACAAAQEAAAAAAAAAAAAFAAAAIAAAABAA=</HashCode>
       <FileName>Model\Level.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.Tank" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="3.5" Width="1.5" />
+    <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IEQAAAAAQEAAgAQgACABAAABAAAAAAAAAQAAABAAAAA=</HashCode>
       <FileName>Model\Tank.cs</FileName>
@@ -62,7 +78,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.Objects.Metal" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Position X="7.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAgACAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Model\Objects\Metal.cs</FileName>
@@ -70,7 +86,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.Objects.Sand" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="2.5" Width="1.5" />
+    <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAgACAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Model\Objects\Sand.cs</FileName>
@@ -78,28 +94,42 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.Objects.Stone" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+    <Position X="4" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAgACAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Model\Objects\Stone.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Engine.Model.Objects.Wall" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAgACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Objects\Wall.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Engine.Model.Objects.Water" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAgACAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Model\Objects\Water.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Engine.Model.Strategies.PlayerStrategy" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+  <Class Name="Engine.Model.Strategies.PlayerStrategy" Collapsed="true">
+    <Position X="7" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAQCA=</HashCode>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAQAA=</HashCode>
       <FileName>Model\Strategies\PlayerStrategy.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Engine.Model.Strategies.RandomStrategy" Collapsed="true">
+    <Position X="4" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAEAAAEAAAAAAAIAAAAQAA=</HashCode>
+      <FileName>Model\Strategies\RandomStrategy.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Class Name="Engine.Model.TankElements.FastTracks" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="4" Y="0.5" Width="1.5" />
@@ -109,8 +139,24 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Engine.Model.TankElements.HeavyBody" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TankElements\HeavyBody.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Engine.Model.TankElements.HightDamageGun" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TankElements\HightDamageGun.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Engine.Model.TankElements.LightBody" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="4" Y="1.5" Width="1.5" />
+    <Position X="5.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Model\TankElements\LightBody.cs</FileName>
@@ -118,92 +164,124 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.TankElements.LightGun" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="5.75" Y="1.5" Width="1.5" />
+    <Position X="7.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Model\TankElements\LightGun.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Engine.Model.TankElements.MediumBody" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TankElements\MediumBody.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Engine.Model.TankElements.MediumGun" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TankElements\MediumGun.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Engine.Model.TankElements.MediumTracks" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TankElements\MediumTracks.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Engine.Model.TankElements.WidthTracks" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\TankElements\WidthTracks.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="TanksInterfaces.Attributes.GameControllerAttribute" Collapsed="true">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+    <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="TanksInterfaces.Vector" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="0.5" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="TanksInterfaces.Patterns.Strategy" Collapsed="true">
+    <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
   <Interface Name="TanksInterfaces.IController" Collapsed="true">
-    <Position X="11" Y="1.75" Width="1.5" />
+    <Position X="14.5" Y="1.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.IEnviroment" Collapsed="true">
-    <Position X="7.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
-  <Interface Name="TanksInterfaces.IGameObject" Collapsed="true">
-    <Position X="12.75" Y="3.25" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
-  <Interface Name="TanksInterfaces.ILevel" Collapsed="true">
     <Position X="11" Y="2.5" Width="1.5" />
     <TypeIdentifier />
   </Interface>
+  <Interface Name="TanksInterfaces.IGameObject" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="TanksInterfaces.ILevel" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
   <Interface Name="TanksInterfaces.IPhysicalObject" Collapsed="true">
-    <Position X="11.75" Y="4" Width="1.5" />
+    <Position X="6.25" Y="8" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.ITank" Collapsed="true">
-    <Position X="13.75" Y="4" Width="1.5" />
+    <Position X="8.5" Y="8" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.IView" Collapsed="true">
-    <Position X="11" Y="3.25" Width="1.5" />
+    <Position X="12.75" Y="3.25" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.Patterns.IBuilder" Collapsed="true">
-    <Position X="9.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
-  <Interface Name="TanksInterfaces.Patterns.IStrategy" Collapsed="true">
-    <Position X="7.5" Y="3.25" Width="1.5" />
+    <Position X="12.75" Y="1.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.TankElements.IBody" Collapsed="true">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+    <Position X="11" Y="1.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.TankElements.IGun" Collapsed="true">
-    <Position X="9.25" Y="2.5" Width="1.5" />
+    <Position X="12.75" Y="2.5" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="TanksInterfaces.TankElements.ITracks" Collapsed="true">
-    <Position X="9.25" Y="3.25" Width="1.5" />
+    <Position X="11" Y="3.25" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Enum Name="TanksInterfaces.ObjType" Collapsed="true">
-    <Position X="7.5" Y="5.75" Width="1.5" />
+    <Position X="14.5" Y="4.25" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Enum Name="TanksInterfaces.TracksType" Collapsed="true">
-    <Position X="9.25" Y="5" Width="1.5" />
+    <Position X="12.75" Y="5" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Enum Name="TanksInterfaces.BodyType" Collapsed="true">
-    <Position X="7.5" Y="4.25" Width="1.5" />
+    <Position X="11" Y="4.25" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Enum Name="TanksInterfaces.GunType" Collapsed="true">
-    <Position X="9.25" Y="4.25" Width="1.5" />
+    <Position X="12.75" Y="4.25" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Enum Name="TanksInterfaces.TankType" Collapsed="true">
-    <Position X="7.5" Y="5" Width="1.5" />
+    <Position X="11" Y="5" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Delegate Name="Engine.Model.DrawEvent" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Game.cs</FileName>

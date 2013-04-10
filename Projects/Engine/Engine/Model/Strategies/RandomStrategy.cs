@@ -8,39 +8,29 @@ using TanksInterfaces.Patterns;
 
 namespace Engine.Model.Strategies
 {
-    class RandomStrategy : IStrategy
+    class RandomStrategy : Strategy
     {
-        private readonly IEnviroment _enviroment;
         private bool _changeDirection;
         private Vector _direction;
 
-        public Vector GetNewPosition(ITank me)
+        public override Vector GetNewPosition(ITank me)
         {
-            Vector newPos = me.Position + me.Direction * me.Speed;
-            IGameObject obj = _enviroment.Collizion(me, newPos);
-#warning diagnostic
-            if (obj != null) System.Diagnostics.Debug.Print("{0} {1} {2} {3}", me.Type.ToString(), obj.GetType(), obj.Position.X, obj.Position.Y);
-            if (obj == null)
-                return newPos;
-            if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Sand)
-                return me.Position + me.Direction;
-            if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Forest)
-                return newPos;
-            _changeDirection = true;
-            return me.Position;
+            Vector v = base.GetNewPosition(me);
+            if (v == me.Position) _changeDirection = true;
+            return v;
         }
 
-        public bool Fire()
+        public override bool Fire()
         {
-            throw new NotImplementedException();
+            return false;
         }
 
-        public Vector GetDirection()
+        public override Vector GetDirection()
         {
             if (_changeDirection)
             {
                 _changeDirection = false;
-                switch (_enviroment.Rnd.Next(4))
+                switch (base.Enviroment.Rnd.Next(4))
                 {
                     case 0:
                         _direction = Vector.Back;
@@ -60,8 +50,8 @@ namespace Engine.Model.Strategies
         }
 
         public RandomStrategy(IEnviroment env)
+            :base(env)
         {
-            _enviroment = env;
             _changeDirection = true;
             _direction = Vector.Stand;
         }

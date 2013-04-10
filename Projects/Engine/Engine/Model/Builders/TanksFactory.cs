@@ -10,7 +10,7 @@ namespace Engine.Model.Builders
 {
     internal static class TanksFactory
     {
-        public static ITank ConstructTank(IBuilder builder, IStrategy strategy, Vector pos)
+        public static ITank ConstructTank(IBuilder builder, Strategy strategy, Vector pos)
         {
             builder.BuldTrak();
             builder.BuildBody();

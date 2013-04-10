@@ -4,36 +4,19 @@ using TanksInterfaces.Patterns;
 
 namespace Engine.Model.Strategies
 {
-    internal class PlayerStrategy : IStrategy
+    internal class PlayerStrategy : Strategy
     {
-        private readonly IEnviroment _enviroment; 
-        public Vector GetNewPosition(ITank me)
+        public override Vector GetNewPosition(ITank me)
         {
-            Vector newPos = me.Position + me.Direction*me.Speed;
-            //return newPos;
-            IGameObject obj = _enviroment.Collizion(me, newPos);
-#warning diagnostic
-            if (obj != null) System.Diagnostics.Debug.Print("{0} {1} {2} {3}", me.Type.ToString(), obj.GetType(), obj.Position.X, obj.Position.Y);
-            if (obj == null) 
-                return newPos;
-            if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Sand)
-                return me.Position + me.Direction;
-            if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Forest)
-                return newPos;
-            //if (obj is ITank
-            //    || (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Metal)
-            //    || (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Stone)
-            //    || (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Water))
-            //    return me.Position;
-            return me.Position;
+            return base.GetNewPosition(me);
         }
 
-        public bool Fire()
+        public override bool Fire()
         {
-            throw new NotImplementedException();
+            return Controller.GetKey() == 32;
         }
 
-        public Vector GetDirection()
+        public override Vector GetDirection()
         {
             int key = Controller.GetKey();
             switch (key)
@@ -52,8 +35,8 @@ namespace Engine.Model.Strategies
         }
 
         public PlayerStrategy(IEnviroment env)
+            :base(env)
         {
-            _enviroment = env;
         }
     }
 }

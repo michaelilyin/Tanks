@@ -10,7 +10,7 @@ using TanksInterfaces.TankElements;
 
 namespace Engine.Model.Builders
 {
-    class MediumTankBuilder : IBuilder
+    internal class HeavyTankBuilder : IBuilder
     {
         private ITracks _tracks;
         private IBody _body;
@@ -18,17 +18,17 @@ namespace Engine.Model.Builders
 
         public void BuldTrak()
         {
-            _tracks = new MediumTracks();
+            _tracks = new WidthTracks();
         }
 
         public void BuildBody()
         {
-            _body = new MediumBody();
+            _body = new HeavyBody();
         }
 
         public void BuildGun()
         {
-            _gun = new MediumGun();
+            _gun = new HightDamageGun();
         }
 
         public ITank GetProduct(Strategy strategy, Vector pos)

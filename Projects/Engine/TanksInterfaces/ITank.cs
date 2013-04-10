@@ -10,9 +10,9 @@ namespace TanksInterfaces
 {
     public interface ITank : IGameObject
     {
-        IStrategy Strategy { get; }
+        Strategy Strategy { get; }
         void Update();
-        void SetSrategy(IStrategy newStrategy);
+        void SetSrategy(Strategy newStrategy);
         int Speed { get; }
         TankType Type { get; }
         ITracks Tracks { get; }

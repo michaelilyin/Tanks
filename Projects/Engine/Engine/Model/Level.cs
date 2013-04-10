@@ -15,8 +15,8 @@ namespace Engine.Model
         public List<IPhysicalObject> Objects { get; private set; }
         private readonly IGameObject _wall = new Wall(Vector.Stand);
 
-        private const int LevelWidth = 520;
-        private const int LevelHeight = 520;
+        private const int LevelWidth = 520 + 2;
+        private const int LevelHeight = 520 + 2;
 
         private readonly LightTankBuilder _lightTankBuilder;
         private readonly MediumTankBuilder _mediumTankBuilder;
@@ -28,14 +28,14 @@ namespace Engine.Model
             _mediumTankBuilder = new MediumTankBuilder();
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
-            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(150,150)));
-            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(300, 250)));
-            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new PlayerStrategy(this), new Vector(300, 300)));
-            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(200, 300)));
-            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(480, 480)));
+            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new PlayerStrategy(this), new Vector(300,150)));
+            //Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(300, 250)));
+            //Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new PlayerStrategy(this), new Vector(300, 300)));
+            //Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(200, 300)));
+            //Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(480, 480)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 150)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(150, 500)));
-            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(300, 400)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(400, 100)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(100, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 200)));
@@ -45,8 +45,11 @@ namespace Engine.Model
         {
             foreach (var tank in Tanks)
             {
-                tank.Update();
+                if (tank.HealthPoints > 0)
+                    tank.Update();
             }
+            Tanks = (from tank in Tanks where tank.HealthPoints > 0 select tank).ToList();
+
         }
 
         private double Distance(IGameObject obj1, IGameObject obj2)
@@ -62,7 +65,7 @@ namespace Engine.Model
         public IGameObject Collizion(IGameObject obj)
         {
 #warning notforrelease
-            if ((obj.Position.X - obj.Size / 2 <= 0 || obj.Position.X + obj.Size / 2 >= LevelWidth) || (obj.Position.Y - obj.Size / 2 <= 0 || obj.Position.Y + obj.Size / 2 >= LevelHeight)) return _wall;
+            if ((obj.Position.X - obj.Size / 2 <= 0 - 2 || obj.Position.X + obj.Size / 2 >= LevelWidth) || (obj.Position.Y - obj.Size / 2 <= 0 - 2 || obj.Position.Y + obj.Size / 2 >= LevelHeight)) return _wall;
             foreach (var a in Tanks)
                 if (!obj.Equals(a)/*a.Position.X != obj.Position.X && a.Position.Y != obj.Position.Y*/)
                     if (Distance(obj, a) < (obj.Size + a.Size)/2 - 3) return a;
@@ -72,7 +75,7 @@ namespace Engine.Model
         public IGameObject Collizion(IGameObject obj, Vector pos)
         {
 #warning notforrelease
-            if ((pos.X - obj.Size / 2 <= 0 || pos.X + obj.Size / 2 >= LevelWidth) || (pos.Y - obj.Size / 2 <= 0 || pos.Y + obj.Size / 2 >= LevelHeight)) return _wall;
+            if ((pos.X - obj.Size / 2 <= 0 - 2 || pos.X + obj.Size / 2 >= LevelWidth) || (pos.Y - obj.Size / 2 <= 0 - 2 || pos.Y + obj.Size / 2 >= LevelHeight)) return _wall;
             foreach (var a in Tanks)
                 if (!obj.Equals(a)/*a.Position.X != pos.X && a.Position.Y != pos.Y*/)
                     if (Distance(a, pos) < (obj.Size + a.Size) / 2 - 3) return a;

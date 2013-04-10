@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="Model\Builders\HeavyTankBuilder.cs" />
     <Compile Include="Model\Builders\LightTankBuilder.cs" />
     <Compile Include="Model\Builders\MediumTankBuilder.cs" />
     <Compile Include="Model\Builders\TanksFactory.cs" />
@@ -55,11 +56,14 @@
     <Compile Include="Model\Strategies\RandomStrategy.cs" />
     <Compile Include="Model\Tank.cs" />
     <Compile Include="Model\TankElements\FastTracks.cs" />
+    <Compile Include="Model\TankElements\HeavyBody.cs" />
+    <Compile Include="Model\TankElements\HightDamageGun.cs" />
     <Compile Include="Model\TankElements\LightBody.cs" />
     <Compile Include="Model\TankElements\LightGun.cs" />
     <Compile Include="Model\TankElements\MediumBody.cs" />
     <Compile Include="Model\TankElements\MediumGun.cs" />
     <Compile Include="Model\TankElements\MediumTracks.cs" />
+    <Compile Include="Model\TankElements\WidthTracks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

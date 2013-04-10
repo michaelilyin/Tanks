@@ -92,27 +92,35 @@ namespace View
             pictureBox1.Image = buffer;
         }
 
+        #region Keys
+
         public int GetKey()
         {
-            return _currentKey;
+            if (keys.Count > 0) return keys[keys.Count - 1];
+            else return -1;
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            gameController.Strat();
-        }
-
-        private int _currentKey = -1;
-        private int _prevKey = -1;
+        //private int _currentKey = -1;
+        //private int _prevKey = -1;
+        private List<int> keys = new List<int>();
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            _currentKey = e.KeyValue;
+            //_currentKey = e.KeyValue;
+            if (!keys.Contains(e.KeyValue)) keys.Add(e.KeyValue);
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            _currentKey = -1;
+            //_currentKey = -1;
+            keys.Remove(e.KeyValue);
+        }
+
+        #endregion
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            gameController.Strat();
         }
     }
 }

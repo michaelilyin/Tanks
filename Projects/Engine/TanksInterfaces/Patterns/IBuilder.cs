@@ -11,6 +11,6 @@ namespace TanksInterfaces.Patterns
         void BuldTrak();
         void BuildBody();
         void BuildGun();
-        ITank GetProduct(IStrategy strategy, Vector pos);
+        ITank GetProduct(Strategy strategy, Vector pos);
     }
 }
