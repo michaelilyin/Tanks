@@ -13,7 +13,7 @@ namespace Engine.Model.TankElements
     {
         public override Bullet Fire(Vector start, Vector dir)
         {
-            timeToReloadEnd = ReloadTime;
+            TimeToReloadEnd = ReloadTime;
             return new SmallBullet(start, dir, Damage);
         }
 

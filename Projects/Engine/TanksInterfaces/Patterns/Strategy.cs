@@ -42,7 +42,7 @@ namespace TanksInterfaces.Patterns
 
         public void Fire(Gun gun, ITank me)
         {
-            _enviroment.AddBullet(gun.Fire(me.Position + me.Direction*10, me.Direction));
+            _enviroment.AddBullet(gun.Fire(me.Position + me.Direction*20, me.Direction));
         }
 
         public abstract Vector GetDirection();

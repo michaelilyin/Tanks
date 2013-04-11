@@ -11,6 +11,18 @@ namespace TanksInterfaces
         public Vector Position { get; protected set; }
         public Vector Direction { get; protected set; }
         public abstract int Size { get; protected set; }
+        public bool IsExists { get; private set; }
+
+        public void Destroy()
+        {
+            IsExists = false;
+        }
+
+        public bool BulletProcess(Bullet bul)
+        {
+            throw new NotImplementedException();
+        }
+
         public abstract BulletType Type { get; protected set; }
         public int Damage { get; protected set; }
 
@@ -19,6 +31,7 @@ namespace TanksInterfaces
             Position = pos;
             Direction = dir;
             Damage = damage;
+            IsExists = true;
         }
 
         public void Update()

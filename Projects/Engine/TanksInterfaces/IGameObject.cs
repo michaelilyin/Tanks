@@ -11,5 +11,8 @@ namespace TanksInterfaces
         Vector Position { get; }
         Vector Direction { get; }
         int Size { get; }
+        bool IsExists { get; }
+        //void Destroy();
+        bool BulletProcess(Bullet bul);
     }
 }

@@ -148,9 +148,17 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.TankElements.HightDamageGun" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="13.25" Y="8" Width="1.5" />
+    <InheritanceLine Type="TanksInterfaces.TankElements.Gun" FixedToPoint="true">
+      <Path>
+        <Point X="14" Y="6.812" />
+        <Point X="14" Y="7.187" />
+        <Point X="14.062" Y="7.187" />
+        <Point X="14.062" Y="8" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAIAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\TankElements\HightDamageGun.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -163,9 +171,9 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.TankElements.LightGun" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="7.5" Y="1.5" Width="1.5" />
+    <Position X="15.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAIAAAAAAAAAAAAEAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\TankElements\LightGun.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -178,7 +186,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Engine.Model.TankElements.MediumGun" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+    <Position X="11.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\TankElements\MediumGun.cs</FileName>
@@ -211,6 +219,22 @@
   </Class>
   <Class Name="TanksInterfaces.Patterns.Strategy" Collapsed="true">
     <Position X="5.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Engine.Model.Bullets.SmallBullet" Collapsed="true">
+    <Position X="2.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\Bullets\SmallBullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TanksInterfaces.Bullet" Collapsed="true">
+    <Position X="2" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TanksInterfaces.TankElements.Gun" Collapsed="true">
+    <Position X="13.25" Y="6.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Interface Name="TanksInterfaces.IController" Collapsed="true">
@@ -271,6 +295,10 @@
   </Enum>
   <Enum Name="TanksInterfaces.TankType" Collapsed="true">
     <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="TanksInterfaces.BulletType" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
     <TypeIdentifier />
   </Enum>
   <Delegate Name="Engine.Model.DrawEvent" Collapsed="true">

@@ -15,6 +15,10 @@ namespace Engine.Model
         public Vector Position { get; private set; }
         public Vector Direction { get; private set; }
         public int Size { get; private set; }
+        public bool IsExists {
+            get { return HealthPoints > 0; }
+        }
+
         public Strategy Strategy { get; private set; }
         public Vector MoveDirection { get; private set; }
         public int Speed {
@@ -61,6 +65,24 @@ namespace Engine.Model
         public void SetSrategy(Strategy newStrategy)
         {
             Strategy = newStrategy;
+        }
+
+        private double Distance(Vector p1, Vector p2)
+        {
+            return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+        }
+
+        public bool BulletProcess(Bullet bul)
+        {
+            if (Distance(bul.Position, Position) < (bul.Size + Size)/2)
+            {
+                HealthPoints -= bul.Damage;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

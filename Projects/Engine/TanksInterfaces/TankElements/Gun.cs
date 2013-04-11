@@ -12,20 +12,20 @@ namespace TanksInterfaces.TankElements
         public int Damage { get; protected set; }
         public int ReloadTime { get; protected set; }
         public bool Reloaded {
-            get { return timeToReloadEnd <= 0; }
+            get { return TimeToReloadEnd <= 0; }
         }
-        protected int timeToReloadEnd;
+        protected int TimeToReloadEnd;
 
         public abstract Bullet Fire(Vector start, Vector dir);
 
         public void Reload()
         {
-            timeToReloadEnd--;
+            TimeToReloadEnd--;
         }
 
         public Gun()
         {
-            timeToReloadEnd = 0;
+            TimeToReloadEnd = 0;
         }
     }
 }

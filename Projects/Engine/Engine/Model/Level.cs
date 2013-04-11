@@ -45,8 +45,33 @@ namespace Engine.Model
         {
             foreach (var bullet in Bullets)
             {
-                bullet.Update();    
+                if ((bullet.Position.X - bullet.Size/2 <= 0 - 2
+                    || bullet.Position.X + bullet.Size/2 >= LevelWidth)
+                    || (bullet.Position.Y - bullet.Size/2 <= 0 - 2
+                    || bullet.Position.Y + bullet.Size/2 >= LevelHeight))
+                {
+                    bullet.Destroy();
+                    continue;
+                }
+                else
+                {
+                    bullet.Update();
+                    bool res = false;
+                    foreach (var obj in Objects)
+                    {
+                        res = obj.BulletProcess(bullet);
+                        if (res) { bullet.Destroy(); break; }
+                    }
+                    if (res) continue;
+                    foreach (var tank in Tanks)
+                    {
+                        res = tank.BulletProcess(bullet);
+                        if (res) {bullet.Destroy(); break; }
+                    }
+                }   
             }
+            Bullets = (from Bullet b in Bullets where b.IsExists select b).ToList();
+            Objects = (from IPhysicalObject obj in Objects where obj.IsExists select obj).ToList();
             foreach (var tank in Tanks)
             {
                 if (tank.HealthPoints > 0)
