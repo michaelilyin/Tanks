@@ -18,7 +18,7 @@ namespace Engine.Model.TankElements
         {
             Type = TracksType.Fast;
             HealthPoints = 1;
-            Speed = 6;
+            Speed = 7;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Engine.Model
         public Vector Direction { get; private set; }
         public int Size { get; private set; }
         public Strategy Strategy { get; private set; }
+        public Vector MoveDirection { get; private set; }
         public int Speed {
             get { return Tracks.Speed - Body.Weight; }
         }
@@ -23,11 +24,11 @@ namespace Engine.Model
         public TankType Type { get { return _type; } }
         public ITracks Tracks { get; private set; }
         public IBody Body { get; private set; }
-        public IGun Gun { get; private set; }
+        public Gun Gun { get; private set; }
         public int HealthPoints { get; private set; }
 
 
-        public Tank(ITracks tracks, IBody body, IGun gun, Vector pos, Strategy strategy)
+        public Tank(ITracks tracks, IBody body, Gun gun, Vector pos, Strategy strategy)
         {
             Size = 40;
             Position = pos;
@@ -37,19 +38,24 @@ namespace Engine.Model
             Body = body;
             Gun = gun;
             HealthPoints = body.HealthPoints + Tracks.HealthPoints;
-            Direction = Vector.Stand;
+            MoveDirection = Vector.Stand;
+            Direction = Vector.Forward;
         }
 
         public void Update()
         {
-            Direction = Strategy.GetDirection();
+            MoveDirection = Strategy.GetDirection();
+            if (MoveDirection != Vector.Stand) Direction = MoveDirection;
             Position = Strategy.GetNewPosition(this);
-            if (Strategy.Fire()) Fire();
+            if (Strategy.CanFire(this)) 
+                Fire();
+            else
+                if (!Gun.Reloaded) Gun.Reload();
         }
 
         public void Fire()
         {
-            System.Diagnostics.Debug.WriteLine("FIRE!", this.Type.ToString());
+            Strategy.Fire(Gun, this);
         }
 
         public void SetSrategy(Strategy newStrategy)

@@ -17,7 +17,7 @@ namespace Engine
 
         private void Game_Draw(object sender, DrawEventArgs e)
         {
-            _view.Draw(e.Tanks, e.Objects);
+            _view.Draw(e.Tanks, e.Objects, e.Bullets);
         }
 
         public static int GetKey()

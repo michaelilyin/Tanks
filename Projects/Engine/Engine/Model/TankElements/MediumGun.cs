@@ -8,17 +8,18 @@ using TanksInterfaces.TankElements;
 
 namespace Engine.Model.TankElements
 {
-    internal class MediumGun : IGun
+    internal class MediumGun : Gun
     {
-        public GunType Type { get; private set; }
-        public int Damage { get; private set; }
-        public int Weight { get; private set; }
+        public override Bullet Fire(Vector start, Vector dir)
+        {
+            throw new NotImplementedException();
+        }
 
         public MediumGun()
         {
             Type = GunType.MediumDamageGun;
             Damage = 2;
-            Weight = 2;
+            ReloadTime = 45;
         }
     }
 }

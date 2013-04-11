@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksInterfaces.TankElements;
 
 namespace TanksInterfaces.Patterns
 {
@@ -22,7 +23,7 @@ namespace TanksInterfaces.Patterns
 
         public virtual Vector GetNewPosition(ITank me)
         {
-            Vector newPos = me.Position + me.Direction*me.Speed;
+            Vector newPos = me.Position + me.MoveDirection*me.Speed;
             IGameObject obj = Enviroment.Collizion(me, newPos);
 #warning diagnostic
             if (obj != null)
@@ -31,13 +32,19 @@ namespace TanksInterfaces.Patterns
             if (obj == null)
                 return newPos;
             if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Sand)
-                return me.Position + me.Direction * (me.Speed / 2);
+                return me.Position + me.MoveDirection * (me.Speed / 2);
             if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Forest)
                 return newPos;
             return me.Position;
         }
 
-        public abstract bool Fire();
+        public abstract bool CanFire(ITank me);
+
+        public void Fire(Gun gun, ITank me)
+        {
+            _enviroment.AddBullet(gun.Fire(me.Position + me.Direction*10, me.Direction));
+        }
+
         public abstract Vector GetDirection();
     }
 }

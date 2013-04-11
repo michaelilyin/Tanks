@@ -11,10 +11,12 @@ namespace Engine.Model.Strategies
             return base.GetNewPosition(me);
         }
 
-        public override bool Fire()
+        public override bool CanFire(ITank me)
         {
-            return Controller.GetKey() == 32;
+            return Controller.GetKey() == 32 && me.Gun.Reloaded;
         }
+
+
 
         public override Vector GetDirection()
         {

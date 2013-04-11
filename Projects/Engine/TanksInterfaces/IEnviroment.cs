@@ -10,6 +10,7 @@ namespace TanksInterfaces
     {
         IGameObject Collizion(IGameObject obj);
         IGameObject Collizion(IGameObject obj, Vector pos);
+        void AddBullet(Bullet bul);
         Random Rnd { get; }
     }
 }

@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Model.Bullets;
 using TanksInterfaces;
 using TanksInterfaces.TankElements;
 
 namespace Engine.Model.TankElements
 {
-    internal class LightGun : IGun
+    internal class LightGun : Gun
     {
-        public GunType Type { get; private set; }
-        public int Damage { get; private set; }
-        public int Weight { get; private set; }
+        public override Bullet Fire(Vector start, Vector dir)
+        {
+            timeToReloadEnd = ReloadTime;
+            return new SmallBullet(start, dir, Damage);
+        }
 
         public LightGun()
         {
             Type = GunType.LowDamageGun;
             Damage = 1;
-            Weight = 1;
+            ReloadTime = 30;
         }
     }
 }

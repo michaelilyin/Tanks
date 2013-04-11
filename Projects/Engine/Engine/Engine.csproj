@@ -44,6 +44,7 @@
     <Compile Include="Model\Builders\LightTankBuilder.cs" />
     <Compile Include="Model\Builders\MediumTankBuilder.cs" />
     <Compile Include="Model\Builders\TanksFactory.cs" />
+    <Compile Include="Model\Bullets\SmallBullet.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Objects\Forest.cs" />

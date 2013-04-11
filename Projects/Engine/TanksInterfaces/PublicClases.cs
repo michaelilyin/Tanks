@@ -76,4 +76,6 @@ namespace TanksInterfaces
     public enum GunType { LowDamageGun, MediumDamageGun, HightDamageGun }
 
     public enum TankType { Enemy, Player }
+
+    public enum BulletType { SmallBullet, BigBullet, Napalm }
 }

@@ -14,7 +14,7 @@ namespace Engine.Model.Builders
     {
         private ITracks _tracks;
         private IBody _body;
-        private IGun _gun;
+        private Gun _gun;
 
         public void BuldTrak()
         {

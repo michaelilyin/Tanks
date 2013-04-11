@@ -57,9 +57,16 @@ namespace View
             //gameController = new Controller(this);
         }
 
-        public void Draw(List<ITank> tanks, List<IPhysicalObject> objects)
+        public void Draw(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets)
         {
             gr.Clear(Color.Black);
+            foreach (var bullet in bullets)
+            {
+                gr.DrawImage(Resources.Bullets[bullet.Type][bullet.Direction],
+                    bullet.Position.X - bullet.Size / 2,
+                    buffer.Height - (bullet.Position.Y - bullet.Size / 2) - bullet.Size,
+                    bullet.Size, bullet.Size);      
+            }
             foreach (var physicalObject in objects)
             {
                 gr.DrawImage(Resources.Objects[physicalObject.Type], 

@@ -20,7 +20,7 @@ namespace Engine.Model.Strategies
             return v;
         }
 
-        public override bool Fire()
+        public override bool CanFire(ITank me)
         {
             return false;
         }
