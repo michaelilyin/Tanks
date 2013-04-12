@@ -20,8 +20,8 @@ namespace Engine.Model.TankElements
         public HightDamageGun()
         {
             Type = GunType.HightDamageGun;
-            Damage = 50;
-            ReloadTime = 60;
+            Damage = 30;
+            ReloadTime = 50;
         }
     }
 }
