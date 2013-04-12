@@ -14,7 +14,7 @@ namespace Engine.Model.TankElements
         public override Bullet Fire(Vector start, Vector dir)
         {
             TimeToReloadEnd = ReloadTime;
-            return new Napalm(start + dir*40, dir, Damage);
+            return new Napalm(start + dir*30, dir, Damage);
         }
 
         public HightDamageGun()

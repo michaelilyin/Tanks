@@ -34,7 +34,7 @@ namespace Engine.Model
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
             Bullets = new List<Bullet>();
-            Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new PlayerStrategy(this), new Vector(300,150)));
+            Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new PlayerStrategy(this), new Vector(300,150)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 150)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(150, 500)));
             Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
