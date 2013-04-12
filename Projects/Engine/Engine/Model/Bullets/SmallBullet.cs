@@ -7,7 +7,7 @@ using TanksInterfaces;
 
 namespace Engine.Model.Bullets
 {
-    public sealed class SmallBullet : Bullet
+    internal sealed class SmallBullet : Bullet
     {
         public SmallBullet(Vector pos, Vector dir, int damage) : base(pos, dir, damage)
         {

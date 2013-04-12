@@ -13,7 +13,7 @@ namespace Engine.Model.Strategies
 
         public override bool CanFire(ITank me)
         {
-            return Controller.GetKey() == 32 && me.Gun.Reloaded;
+            return Controller.GetKey() == 32 && base.CanFire(me);
         }
 
 

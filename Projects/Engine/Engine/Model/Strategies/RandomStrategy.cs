@@ -22,7 +22,7 @@ namespace Engine.Model.Strategies
 
         public override bool CanFire(ITank me)
         {
-            return false;
+            return Enviroment.Rnd.Next(2) == 0 && base.CanFire(me);
         }
 
         public override Vector GetDirection()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Model.Bullets;
 using TanksInterfaces;
 
 namespace Engine.Model.Objects
@@ -23,6 +24,15 @@ namespace Engine.Model.Objects
         {
             if (Distance(bul.Position, Position) < (bul.Size + Size) / 2)
             {
+                if (bul.Type == BulletType.Napalm)
+                {
+                    IsExists = false;
+                    var n = bul as Napalm;
+                    n.DecEnergy(5);
+                    if (n.Energy <= 0)
+                        return true;
+                    return false;
+                }
                 return true;
             }
             else

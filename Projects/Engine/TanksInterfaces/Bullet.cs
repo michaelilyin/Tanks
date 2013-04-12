@@ -13,7 +13,7 @@ namespace TanksInterfaces
         public abstract int Size { get; protected set; }
         public bool IsExists { get; private set; }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
             IsExists = false;
         }

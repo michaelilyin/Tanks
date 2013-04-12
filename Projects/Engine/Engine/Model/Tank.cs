@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Model.Bullets;
 using Engine.Model.Strategies;
 using TanksInterfaces;
 using TanksInterfaces.Patterns;
@@ -76,8 +77,27 @@ namespace Engine.Model
         {
             if (Distance(bul.Position, Position) < (bul.Size + Size)/2)
             {
-                HealthPoints -= bul.Damage;
-                return true;
+                if (bul.Type == BulletType.Napalm)
+                {
+                    Napalm n = bul as Napalm;
+                    if (n.Energy <= HealthPoints)
+                    {
+                        HealthPoints -= n.Energy;
+                        n.DecEnergy(n.Energy);
+                        return true;
+                    }
+                    else
+                    {
+                        n.DecEnergy(HealthPoints);
+                        HealthPoints = 0;
+                        return false;
+                    }
+                }
+                else
+                {
+                    HealthPoints -= bul.Damage;
+                    return true;
+                }
             }
             else
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Model.Bullets;
 using TanksInterfaces;
 using TanksInterfaces.TankElements;
 
@@ -12,7 +13,8 @@ namespace Engine.Model.TankElements
     {
         public override Bullet Fire(Vector start, Vector dir)
         {
-            throw new NotImplementedException();
+            TimeToReloadEnd = ReloadTime;
+            return new Napalm(start + dir*40, dir, Damage);
         }
 
         public HightDamageGun()

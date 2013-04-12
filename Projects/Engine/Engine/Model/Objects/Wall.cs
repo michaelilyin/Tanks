@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine.Model.Bullets;
 using TanksInterfaces;
 
 namespace Engine.Model.Objects
@@ -21,6 +22,7 @@ namespace Engine.Model.Objects
 
         public bool BulletProcess(Bullet bul)
         {
+            if (bul.Type == BulletType.Napalm) (bul as Napalm).DecEnergy(bul.Damage);
             return true;
         }
 

@@ -14,14 +14,14 @@ namespace Engine.Model.TankElements
         public override Bullet Fire(Vector start, Vector dir)
         {
             TimeToReloadEnd = ReloadTime;
-            return new SmallBullet(start, dir, Damage);
+            return new SmallBullet(start + dir*20, dir, Damage);
         }
 
         public LightGun()
         {
             Type = GunType.LowDamageGun;
             Damage = 1;
-            ReloadTime = 30;
+            ReloadTime = 15;
         }
     }
 }

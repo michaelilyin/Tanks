@@ -22,6 +22,7 @@ namespace Engine.Model
         private readonly LightTankBuilder _lightTankBuilder;
         private readonly MediumTankBuilder _mediumTankBuilder;
         private readonly HeavyTankBuilder _heavyTankBuilder;
+        private readonly LightDestroyerBuilder _lightDestroyerBuilder;
 
         public Level()
         {
@@ -29,15 +30,16 @@ namespace Engine.Model
             _lightTankBuilder = new LightTankBuilder();
             _mediumTankBuilder = new MediumTankBuilder();
             _heavyTankBuilder = new HeavyTankBuilder();
+            _lightDestroyerBuilder = new LightDestroyerBuilder();
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
             Bullets = new List<Bullet>();
-            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new PlayerStrategy(this), new Vector(300,150)));
-            Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(500, 150)));
-            Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(150, 500)));
-            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
-            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(400, 100)));
-            Tanks.Add(TanksFactory.ConstructTank(_mediumTankBuilder, new RandomStrategy(this), new Vector(100, 400)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new PlayerStrategy(this), new Vector(300,150)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 150)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(150, 500)));
+            Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(400, 120)));
+            Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new RandomStrategy(this), new Vector(100, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 200)));
         }
 
@@ -50,8 +52,8 @@ namespace Engine.Model
                     || (bullet.Position.Y - bullet.Size/2 <= 0 - 2
                     || bullet.Position.Y + bullet.Size/2 >= LevelHeight))
                 {
+                    _wall.BulletProcess(bullet);
                     bullet.Destroy();
-                    continue;
                 }
                 else
                 {

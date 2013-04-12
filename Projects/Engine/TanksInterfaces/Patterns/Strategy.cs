@@ -38,11 +38,14 @@ namespace TanksInterfaces.Patterns
             return me.Position;
         }
 
-        public abstract bool CanFire(ITank me);
+        public virtual bool CanFire(ITank me)
+        {
+            return me.Gun.Reloaded;
+        }
 
         public void Fire(Gun gun, ITank me)
         {
-            _enviroment.AddBullet(gun.Fire(me.Position + me.Direction*20, me.Direction));
+            _enviroment.AddBullet(gun.Fire(me.Position, me.Direction));
         }
 
         public abstract Vector GetDirection();

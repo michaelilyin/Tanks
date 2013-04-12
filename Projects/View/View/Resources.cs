@@ -100,6 +100,12 @@ namespace View
             Bullets[BulletType.SmallBullet][Vector.Forward] = Bullets[BulletType.SmallBullet][Vector.Left];
             Bullets[BulletType.SmallBullet][Vector.Right] = Bullets[BulletType.SmallBullet][Vector.Left];
             Bullets[BulletType.SmallBullet][Vector.Back] = Bullets[BulletType.SmallBullet][Vector.Left];
+
+            Bullets[BulletType.Napalm] = new Dictionary<Vector, Bitmap>();
+            Bullets[BulletType.Napalm][Vector.Left] = new Bitmap(images + "\\NapalmLeft.png");
+            Bullets[BulletType.Napalm][Vector.Forward] = new Bitmap(images + "\\NapalmForward.png");
+            Bullets[BulletType.Napalm][Vector.Right] = new Bitmap(images + "\\NapalmRight.png");
+            Bullets[BulletType.Napalm][Vector.Back] = new Bitmap(images + "\\NapalmBack.png");
             #endregion
             //Tanks[Vector.Left] = new Bitmap(images + "\\PlayerTankLeft.png");
             //Tanks[Vector.Forward] = new Bitmap(images + "\\PlayerTankForward.png");
