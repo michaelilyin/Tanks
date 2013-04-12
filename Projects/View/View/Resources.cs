@@ -36,6 +36,7 @@ namespace View
             Objects[ObjType.Sand] = new Bitmap(images + "\\Sand.png");
 
             #region EnemyDetails
+
             /*LightEnemyDetails*/
             Bodies[BodyType.Light] = new Dictionary<Vector, Bitmap>();
             Bodies[BodyType.Light][Vector.Left] = new Bitmap(images + "\\LightBodyLeft.png");
@@ -92,9 +93,11 @@ namespace View
             Guns[GunType.HightDamageGun][Vector.Forward] = new Bitmap(images + "\\HeavyGunForward.png");
             Guns[GunType.HightDamageGun][Vector.Right] = new Bitmap(images + "\\HeavyGunRight.png");
             Guns[GunType.HightDamageGun][Vector.Back] = new Bitmap(images + "\\HeavyGunBack.png");
+
             #endregion
 
             #region Bullets
+
             Bullets[BulletType.SmallBullet] = new Dictionary<Vector, Bitmap>();
             Bullets[BulletType.SmallBullet][Vector.Left] = new Bitmap(images + "\\SmallBullet.png");
             Bullets[BulletType.SmallBullet][Vector.Forward] = Bullets[BulletType.SmallBullet][Vector.Left];
@@ -106,7 +109,14 @@ namespace View
             Bullets[BulletType.Napalm][Vector.Forward] = new Bitmap(images + "\\NapalmForward.png");
             Bullets[BulletType.Napalm][Vector.Right] = new Bitmap(images + "\\NapalmRight.png");
             Bullets[BulletType.Napalm][Vector.Back] = new Bitmap(images + "\\NapalmBack.png");
-            #endregion
+
+            Bullets[BulletType.BigBullet] = new Dictionary<Vector, Bitmap>();
+            Bullets[BulletType.BigBullet][Vector.Left] = new Bitmap(images + "\\MediumBulletLeft.png");
+            Bullets[BulletType.BigBullet][Vector.Forward] = new Bitmap(images + "\\MediumBulletForward.png");
+            Bullets[BulletType.BigBullet][Vector.Right] = new Bitmap(images + "\\MediumBulletRight.png");
+            Bullets[BulletType.BigBullet][Vector.Back] = new Bitmap(images + "\\MediumBulletBack.png");
+
+        #endregion
             //Tanks[Vector.Left] = new Bitmap(images + "\\PlayerTankLeft.png");
             //Tanks[Vector.Forward] = new Bitmap(images + "\\PlayerTankForward.png");
             //Tanks[Vector.Right] = new Bitmap(images + "\\PlayerTankRight.png");
