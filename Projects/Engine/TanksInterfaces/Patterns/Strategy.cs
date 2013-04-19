@@ -35,11 +35,20 @@ namespace TanksInterfaces.Patterns
                 return me.Position + me.MoveDirection * (me.Speed / 2);
             if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Forest)
                 return newPos;
-            if (obj is IArt && (obj as IArt).Type == ArtType.Speed)
+            if (obj is IArt/* && (obj as IArt).Type == ArtType.Speed*/)
             {
-                Enviroment.Swap(me, (obj as IArt).Apply(me));
-                (obj as IArt).Find();
-                return newPos;
+                if (me is ITankDecorator)
+                {
+                    Enviroment.Swap(me, (obj as IArt).Apply((me as ITankDecorator).Inner));
+                    (obj as IArt).Find();
+                    return newPos;
+                }
+                else
+                {
+                    Enviroment.Swap(me, (obj as IArt).Apply(me));
+                    (obj as IArt).Find();
+                    return newPos;
+                }
             }
             return me.Position;
         }

@@ -58,6 +58,18 @@ namespace Engine.Model
             _timer.Stop();
             Update();
             _draw();
+            if (_currentLevel.EndCondition())
+                if (_currentLevel.Tanks[0].Type == TankType.Enemy)
+                {
+                    _currentLevel = new Level();
+                    _currentLevel.Load(1);
+                }
+                else
+                {
+                    int k = _currentLevel.Number + 1;
+                    _currentLevel = new Level();
+                    _currentLevel.Load(k);
+                }
             _timer.Start();
         }
 

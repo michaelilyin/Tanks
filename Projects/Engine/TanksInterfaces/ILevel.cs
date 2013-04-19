@@ -16,5 +16,6 @@ namespace TanksInterfaces
         IGameObject Collizion(IGameObject obj);
         void Load(int num);
         int Number { get; }
+        bool EndCondition();
     }
 }

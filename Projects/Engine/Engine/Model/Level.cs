@@ -45,9 +45,10 @@ namespace Engine.Model
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(150, 500)));
            // Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(400, 120)));
-            Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new RandomStrategy(this), new Vector(100, 400)));
+            //Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new RandomStrategy(this), new Vector(100, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 200)));
             Arts.Add(new SpeedArtObj(new Vector(340, 400)));
+            Arts.Add(new ImmortalArtObj(new Vector(100, 400)));
         }
 
         public void Update()
@@ -92,9 +93,6 @@ namespace Engine.Model
             Tanks = (from tank in Tanks where tank.HealthPoints > 0 && !tank.Swap select tank).ToList();
             Tanks.InsertRange(Tanks.Count, TanksForAdd);
             TanksForAdd.Clear();
-            if (EndCondition())
-                if (Tanks[0].Type == TankType.Enemy) Load(1);
-                else NextLevel(Tanks[0]);
         }
 
         private double Distance(IGameObject obj1, IGameObject obj2)
@@ -150,7 +148,7 @@ namespace Engine.Model
             TanksForAdd.Add(newTank);
         }
 
-        private bool EndCondition()
+        public bool EndCondition()
         {
             return (Tanks.Count == 1);
         }

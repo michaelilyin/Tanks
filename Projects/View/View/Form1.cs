@@ -61,13 +61,6 @@ namespace View
         {
             List<IPhysicalObject> forests = new List<IPhysicalObject>();
             gr.Clear(Color.Black);
-            foreach (var art in arts)
-            {
-                gr.DrawImage(Resources.Arts[ArtType.Speed],
-                    art.Position.X - art.Size / 2,
-                    buffer.Height - (art.Position.Y - art.Size / 2) - art.Size,
-                    art.Size, art.Size);
-            }
             foreach (var physicalObject in objects)
             {
                 if (physicalObject.Type != ObjType.Forest)
@@ -115,6 +108,13 @@ namespace View
                                  physicalObject.Size,
                                  physicalObject.Size, physicalObject.Size);
                 }
+            }
+            foreach (IArt art in arts)
+            {
+                gr.DrawImage(Resources.Arts[art.Type],
+                    art.Position.X - art.Size / 2,
+                    buffer.Height - (art.Position.Y - art.Size / 2) - art.Size,
+                    art.Size, art.Size);
             }
             pictureBox1.Image = buffer;
         }

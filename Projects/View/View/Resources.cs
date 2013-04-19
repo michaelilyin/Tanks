@@ -38,6 +38,7 @@ namespace View
             Objects[ObjType.Sand] = new Bitmap(images + "\\Sand.png");
 
             Arts[ArtType.Speed] = new Bitmap(images + "\\SpeedArt.png");
+            Arts[ArtType.Immortal] = new Bitmap(images + "\\ImmortalArt.png");
 
             #region EnemyDetails
 

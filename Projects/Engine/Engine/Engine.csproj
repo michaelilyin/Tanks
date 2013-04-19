@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="Model\ArtObjects\ImmortalArtObj.cs" />
     <Compile Include="Model\ArtObjects\SpeedArtObj.cs" />
+    <Compile Include="Model\Arts\ImmortalArt.cs" />
     <Compile Include="Model\Arts\SpeedArt.cs" />
     <Compile Include="Model\Builders\HeavyTankBuilder.cs" />
     <Compile Include="Model\Builders\LightDestroyerBuilder.cs" />
