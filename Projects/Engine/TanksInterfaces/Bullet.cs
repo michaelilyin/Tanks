@@ -20,7 +20,7 @@ namespace TanksInterfaces
 
         public bool BulletProcess(Bullet bul)
         {
-            throw new NotImplementedException();
+            return false;
         }
 
         public abstract BulletType Type { get; protected set; }
@@ -36,7 +36,7 @@ namespace TanksInterfaces
 
         public void Update()
         {
-            Position += Direction*10;
+            Position += Direction*15;
         }
     }
 }

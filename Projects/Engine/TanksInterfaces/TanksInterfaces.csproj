@@ -41,12 +41,14 @@
   <ItemGroup>
     <Compile Include="Attributes\GameControllerAttribute.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="IArt.cs" />
     <Compile Include="IEnviroment.cs" />
     <Compile Include="IPhysicalObject.cs" />
     <Compile Include="ITank.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="ILevel.cs" />
+    <Compile Include="ITankDecorator.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Patterns\IBuilder.cs" />
     <Compile Include="Patterns\Strategy.cs" />

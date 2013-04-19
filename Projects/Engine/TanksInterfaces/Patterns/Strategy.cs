@@ -27,7 +27,7 @@ namespace TanksInterfaces.Patterns
             IGameObject obj = Enviroment.Collizion(me, newPos);
 #warning diagnostic
             if (obj != null)
-                System.Diagnostics.Debug.Print("{0} {1} {2} {3}", me.Type.ToString(), obj.GetType(), obj.Position.X,
+                System.Diagnostics.Debug.Print("---\n me: {0} vs: {1} {2} {3} {4}", me.Type.ToString(), me.GetType(), obj.GetType(), obj.Position.X,
                                                obj.Position.Y);
             if (obj == null)
                 return newPos;
@@ -35,6 +35,12 @@ namespace TanksInterfaces.Patterns
                 return me.Position + me.MoveDirection * (me.Speed / 2);
             if (obj is IPhysicalObject && (obj as IPhysicalObject).Type == ObjType.Forest)
                 return newPos;
+            if (obj is IArt && (obj as IArt).Type == ArtType.Speed)
+            {
+                Enviroment.Swap(me, (obj as IArt).Apply(me));
+                (obj as IArt).Find();
+                return newPos;
+            }
             return me.Position;
         }
 

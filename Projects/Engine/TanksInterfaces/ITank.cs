@@ -20,5 +20,6 @@ namespace TanksInterfaces
         IBody Body { get; }
         Gun Gun { get; }
         int HealthPoints { get; }
+        bool Swap { get; set; }
     }
 }

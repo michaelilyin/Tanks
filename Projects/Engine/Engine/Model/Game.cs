@@ -10,17 +10,19 @@ namespace Engine.Model
         public List<ITank> Tanks;
         public List<IPhysicalObject> Objects;
         public List<Bullet> Bullets;
-        public DrawEventArgs(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets)
+        public List<IArt> Arts;
+        public DrawEventArgs(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets, List<IArt> arts)
         {
             Tanks = tanks;
             Objects = objects;
             Bullets = bullets;
+            Arts = arts;
         }
     }
 
     public delegate void DrawEvent(object sender, DrawEventArgs e);
 
-    internal class Game
+    public class Game
     {
         #region Singletone
 
@@ -40,7 +42,7 @@ namespace Engine.Model
         private void _draw()
         {
             if (Draw != null)
-                Draw(this, new DrawEventArgs(_currentLevel.Tanks, _currentLevel.Objects, _currentLevel.Bullets));
+                Draw(this, new DrawEventArgs(_currentLevel.Tanks, _currentLevel.Objects, _currentLevel.Bullets, _currentLevel.Arts));
         }
 
         private System.Timers.Timer _timer;
@@ -68,18 +70,19 @@ namespace Engine.Model
 
         public void Start()
         {
+            _currentLevel = new Level();
             _currentLevel.Load(1);
             _timer.Start();
         }
 
         public void Pause()
         {
-            throw new NotImplementedException();
+            _timer.Stop();
         }
 
         public void Continue()
         {
-            throw new NotImplementedException();
+            _timer.Start();
         }
     }
 }

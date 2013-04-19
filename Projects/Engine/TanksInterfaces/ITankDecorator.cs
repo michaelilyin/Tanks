@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TanksInterfaces
 {
-    public interface IView
+    public interface ITankDecorator : ITank
     {
-        void Draw(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets, List<IArt> arts);
-        int GetKey();
+        ITank Inner { get; }
     }
 }

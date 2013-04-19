@@ -31,6 +31,7 @@ namespace Engine.Model
         public IBody Body { get; private set; }
         public Gun Gun { get; private set; }
         public int HealthPoints { get; private set; }
+        public bool Swap { get; set; }
 
 
         public Tank(ITracks tracks, IBody body, Gun gun, Vector pos, Strategy strategy)
@@ -45,6 +46,7 @@ namespace Engine.Model
             HealthPoints = body.HealthPoints + Tracks.HealthPoints;
             MoveDirection = Vector.Stand;
             Direction = Vector.Forward;
+            Swap = false;
         }
 
         public void Update()

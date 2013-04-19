@@ -15,6 +15,7 @@ namespace View
         public static Dictionary<GunType, Dictionary<Vector, Bitmap>> Guns { get; private set; }
         public static Dictionary<BodyType, Dictionary<Vector, Bitmap>> Bodies { get; private set; }
         public static Dictionary<TracksType, Dictionary<Vector, Bitmap>> Traks { get; private set; }
+        public static Dictionary<ArtType, Bitmap> Arts { get; private set; }
 
         public static Dictionary<BulletType, Dictionary<Vector, Bitmap>> Bullets { get; private set; }
 
@@ -22,6 +23,7 @@ namespace View
         {
             Objects = new Dictionary<ObjType, Bitmap>();
             //Tanks = new Dictionary<Vector, Bitmap>();
+            Arts = new Dictionary<ArtType, Bitmap>();
             Bodies = new Dictionary<BodyType, Dictionary<Vector, Bitmap>>();
             Traks = new Dictionary<TracksType, Dictionary<Vector, Bitmap>>();
             Guns = new Dictionary<GunType, Dictionary<Vector, Bitmap>>();
@@ -34,6 +36,8 @@ namespace View
             Objects[ObjType.Forest] = new Bitmap(images + "\\Forest.png");
             Objects[ObjType.Water] = new Bitmap(images + "\\Water.png");
             Objects[ObjType.Sand] = new Bitmap(images + "\\Sand.png");
+
+            Arts[ArtType.Speed] = new Bitmap(images + "\\SpeedArt.png");
 
             #region EnemyDetails
 

@@ -57,15 +57,31 @@ namespace View
             //gameController = new Controller(this);
         }
 
-        public void Draw(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets)
+        public void Draw(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets, List<IArt> arts)
         {
+            List<IPhysicalObject> forests = new List<IPhysicalObject>();
             gr.Clear(Color.Black);
+            foreach (var art in arts)
+            {
+                gr.DrawImage(Resources.Arts[ArtType.Speed],
+                    art.Position.X - art.Size / 2,
+                    buffer.Height - (art.Position.Y - art.Size / 2) - art.Size,
+                    art.Size, art.Size);
+            }
             foreach (var physicalObject in objects)
             {
-                gr.DrawImage(Resources.Objects[physicalObject.Type], 
-                    physicalObject.Position.X - physicalObject.Size/2,
-                    buffer.Height - (physicalObject.Position.Y - physicalObject.Size / 2) - physicalObject.Size, 
-                    physicalObject.Size, physicalObject.Size);
+                if (physicalObject.Type != ObjType.Forest)
+                {
+                    gr.DrawImage(Resources.Objects[physicalObject.Type],
+                                 physicalObject.Position.X - physicalObject.Size/2,
+                                 buffer.Height - (physicalObject.Position.Y - physicalObject.Size/2) -
+                                 physicalObject.Size,
+                                 physicalObject.Size, physicalObject.Size);
+                }
+                else
+                {
+                    forests.Add(physicalObject);
+                }
             }
             foreach (var tank in tanks)
             {
@@ -91,10 +107,14 @@ namespace View
                         buffer.Height - (bullet.Position.Y - bullet.Size / 2) - bullet.Size,
                         bullet.Size, bullet.Size);
                 }
-                //gr.DrawImage(Resources.Tanks[tank.Direction],
-                //    tank.Position.X - tank.Size / 2,
-                //    buffer.Height - (tank.Position.Y - tank.Size / 2) - tank.Size,
-                //    tank.Size, tank.Size);
+                foreach (IPhysicalObject physicalObject in forests)
+                {
+                    gr.DrawImage(Resources.Objects[physicalObject.Type],
+                                 physicalObject.Position.X - physicalObject.Size / 2,
+                                 buffer.Height - (physicalObject.Position.Y - physicalObject.Size / 2) -
+                                 physicalObject.Size,
+                                 physicalObject.Size, physicalObject.Size);
+                }
             }
             pictureBox1.Image = buffer;
         }
@@ -125,9 +145,20 @@ namespace View
 
         #endregion
 
-        private void Form1_Shown(object sender, EventArgs e)
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gameController.Strat();
+            this.ActiveControl = null;
+        }
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gameController.Pause();
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gameController.Continue();
         }
     }
 }

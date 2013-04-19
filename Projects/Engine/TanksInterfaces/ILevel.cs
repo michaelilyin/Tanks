@@ -11,6 +11,7 @@ namespace TanksInterfaces
         List<ITank> Tanks { get; }
         List<IPhysicalObject> Objects { get; }
         List<Bullet> Bullets { get; }
+        List<IArt> Arts { get; }
         void Update();
         IGameObject Collizion(IGameObject obj);
         void Load(int num);

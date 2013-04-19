@@ -12,5 +12,6 @@ namespace TanksInterfaces
         IGameObject Collizion(IGameObject obj, Vector pos);
         void AddBullet(Bullet bul);
         Random Rnd { get; }
+        void Swap(ITank oldTank, ITank newTank);
     }
 }

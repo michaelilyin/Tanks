@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace TanksInterfaces
 {
-    public interface IView
+    public interface IArt : IGameObject
     {
-        void Draw(List<ITank> tanks, List<IPhysicalObject> objects, List<Bullet> bullets, List<IArt> arts);
-        int GetKey();
+        ArtType Type { get; }
+        ITank Apply(ITank obj);
+        void Find();
     }
 }

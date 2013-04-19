@@ -71,6 +71,8 @@ namespace TanksInterfaces
 
     public enum ObjType { Stone, Metal, Forest, Sand, Water }
 
+    public enum ArtType { Speed }
+
     public enum TracksType { Fast, Medium, Width }
     public enum BodyType { Light, Medium, Heavy }
     public enum GunType { LowDamageGun, MediumDamageGun, HightDamageGun }

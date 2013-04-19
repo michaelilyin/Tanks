@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Engine.Model.ArtObjects;
 using Engine.Model.Builders;
 using Engine.Model.Objects;
 using Engine.Model.Strategies;
@@ -9,11 +10,14 @@ using TanksInterfaces;
 
 namespace Engine.Model
 {
-    internal class Level : ILevel, IEnviroment
+    public class Level : ILevel, IEnviroment
     {
         public List<ITank> Tanks { get; private set; }
         public List<IPhysicalObject> Objects { get; private set; }
         public List<Bullet> Bullets { get; private set; }
+        public List<IArt> Arts { get; private set; }
+        public List<ITank> TanksForAdd { get; private set; }
+
         private readonly IGameObject _wall = new Wall(Vector.Stand);
 
         private const int LevelWidth = 520 + 2;
@@ -34,17 +38,21 @@ namespace Engine.Model
             Tanks = new List<ITank>();
             Objects = new List<IPhysicalObject>();
             Bullets = new List<Bullet>();
-            Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new PlayerStrategy(this), new Vector(300,150)));
+            Arts = new List<IArt>();
+            TanksForAdd = new List<ITank>();
+            Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new PlayerStrategy(this), new Vector(300,150)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 150)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(150, 500)));
-            Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
+           // Tanks.Add(TanksFactory.ConstructTank(_heavyTankBuilder, new RandomStrategy(this), new Vector(340, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(400, 120)));
             Tanks.Add(TanksFactory.ConstructTank(_lightDestroyerBuilder, new RandomStrategy(this), new Vector(100, 400)));
             Tanks.Add(TanksFactory.ConstructTank(_lightTankBuilder, new RandomStrategy(this), new Vector(500, 200)));
+            Arts.Add(new SpeedArtObj(new Vector(340, 400)));
         }
 
         public void Update()
         {
+            #region Bullets
             foreach (var bullet in Bullets)
             {
                 if ((bullet.Position.X - bullet.Size/2 <= 0 - 2
@@ -74,13 +82,19 @@ namespace Engine.Model
             }
             Bullets = (from Bullet b in Bullets where b.IsExists select b).ToList();
             Objects = (from IPhysicalObject obj in Objects where obj.IsExists select obj).ToList();
+            #endregion
             foreach (var tank in Tanks)
             {
-                if (tank.HealthPoints > 0)
+                if (tank.HealthPoints > 0 && !tank.Swap)
                     tank.Update();
             }
-            Tanks = (from tank in Tanks where tank.HealthPoints > 0 select tank).ToList();
-
+            Arts = (from art in Arts where art.IsExists select art).ToList();
+            Tanks = (from tank in Tanks where tank.HealthPoints > 0 && !tank.Swap select tank).ToList();
+            Tanks.InsertRange(Tanks.Count, TanksForAdd);
+            TanksForAdd.Clear();
+            if (EndCondition())
+                if (Tanks[0].Type == TankType.Enemy) Load(1);
+                else NextLevel(Tanks[0]);
         }
 
         private double Distance(IGameObject obj1, IGameObject obj2)
@@ -108,8 +122,18 @@ namespace Engine.Model
 #warning notforrelease
             if ((pos.X - obj.Size / 2 <= 0 - 2 || pos.X + obj.Size / 2 >= LevelWidth) || (pos.Y - obj.Size / 2 <= 0 - 2 || pos.Y + obj.Size / 2 >= LevelHeight)) return _wall;
             foreach (var a in Tanks)
-                if (!obj.Equals(a)/*a.Position.X != pos.X && a.Position.Y != pos.Y*/)
-                    if (Distance(a, pos) < (obj.Size + a.Size) / 2 - 3) return a;
+                if (a is ITankDecorator)
+                {
+                    if (!obj.Equals((a as ITankDecorator).Inner)/*a.Position.X != pos.X && a.Position.Y != pos.Y*/)
+                        if (Distance(a, pos) < (obj.Size + a.Size) / 2 - 3) return a;
+                }
+                else 
+                    if (!obj.Equals(a)/*a.Position.X != pos.X && a.Position.Y != pos.Y*/)
+                        if (Distance(a, pos) < (obj.Size + a.Size) / 2 - 3) return a;
+            foreach (var art in Arts)
+            {
+                if (Distance(art, pos) < (obj.Size + art.Size)/2 - 3) return art;
+            }
             return Objects.FirstOrDefault(a => Distance(a, pos) < (obj.Size + a.Size) / 2 - 3);
         }
 
@@ -120,6 +144,27 @@ namespace Engine.Model
 
         public Random Rnd { get; private set; }
 
+        public void Swap(ITank oldTank, ITank newTank)
+        {
+            oldTank.Swap = true;
+            TanksForAdd.Add(newTank);
+        }
+
+        private bool EndCondition()
+        {
+            return (Tanks.Count == 1);
+        }
+
+        private void NextLevel(ITank player)
+        {
+            Bullets = new List<Bullet>();
+            Objects = new List<IPhysicalObject>();
+            Arts = new List<IArt>();
+            TanksForAdd = new List<ITank>();
+            Tanks = new List<ITank>();
+            Tanks.Add(player);
+            Load(1);
+        }
         #region LoadLevel
         public int Number { get; private set; }
 
@@ -142,6 +187,7 @@ namespace Engine.Model
 
         public void Load(int num)
         {
+            Objects = new List<IPhysicalObject>();
             Number = num;
             string path = Directory.GetCurrentDirectory();
             path += "\\Engine\\Levels\\" + num.ToString() + ".lvl";
