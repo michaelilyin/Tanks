@@ -49,6 +49,7 @@ namespace Engine.Model.Arts
             if (_ttl <= 0)
             {
                 Inner.Swap = false;
+                this.Swap = true;
                 this.Strategy.Enviroment.Swap(this, this.Inner);
             }
         }
